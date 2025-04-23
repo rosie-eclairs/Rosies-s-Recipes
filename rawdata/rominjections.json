@@ -1,0 +1,256 @@
+{
+	"AIZ I": 
+	{
+		"File": "AIZI.bin",
+		"RomInject": "0x0a8b1c"
+	},
+	
+	"AIZ1": 
+	{
+		"File": "aiz1.bin",
+		"RomInject": "0x0a8b7c"
+	},
+	
+	"AIZ1 W": 
+	{
+		"File": "AIZ1W.bin",
+		"RomInject": "0x0a8c9c"
+	},
+	
+	"HCZ1": 
+	{
+		"File": "hcz1.bin",
+		"RomInject": "0xA8D9C"
+	},
+	
+	"HCZ1 W": 
+	{
+		"File": "HCZ1W.bin",
+		"RomInject": "0x0a8e5c"
+	},	
+	
+	"HCZ2": 
+	{
+		"File": "hcz2.bin",
+		"RomInject": "0xA8DFC"
+	},
+	
+	
+	"HCZ2 W":
+	{
+		"File": "hcz2w.bin",
+		"RomInject": "0x0A8EDC"
+	},	
+	
+	
+	"MGZ":
+	{
+		"File": "mgz.bin",
+		"RomInject": "0x0A8F5C"
+	},
+
+	"MGZ to CNZ":
+	{
+		"File": "mgz_to_cnz.bin",
+		"RomInject": "0x0364896"
+	},
+
+
+	"CNZ":
+	{
+		"File": "cnz.bin",
+		"RomInject": "0x0A8FBC"
+	},
+
+	"CNZ2 D":
+	{
+		"File": "cnzw.bin",
+		"RomInject": "0x0A901C"
+	},
+
+	"CNZ2 F":
+	{
+		"File": "cnzflash.bin",
+		"RomInject": "0x066932"
+	},
+	
+
+	"FBZ1":
+	{
+		"File": "FBZ1.bin",
+		"RomInject": "0xA909C"
+	},	
+		
+	"FBZ2": 
+	{
+      "File": "FBZ2.bin",
+      "RomInject": "0xA90FC"
+    },		
+		
+	"FBZ O": 
+	{
+      "File": "FBZ BG Outdoors.bin",
+	  "RomInject": "0x052DD0"
+    },		
+	
+	"FBZ I":
+	{
+		"File": "FBZ BG Indoors.bin",
+		"RomInject": "0x052DC0"
+	},
+
+	"ICZ1":
+	{
+		"File": "ICZ1.bin",
+		"RomInject": "0x0A915C"
+	},
+
+	"ICZ2":
+	{
+		"File": "ICZ2.bin",
+		"RomInject": "0x0A91BC"
+	},
+	
+	"ICZ2 W":
+	{
+		"File": "ICZ2W.bin",
+		"RomInject": "0x0A921C"
+	},
+
+	"LBZ1":
+	{
+			"File": "LBZ1.bin",
+			"RomInject": "0x0A929C"
+	},
+	"LBZ2":
+	{
+			"File": "LBZ2.bin",
+			"RomInject": "0x0A92FC"
+	},
+	"LBZ2 W":
+	{
+			"File": "LBZ2W.bin",
+			"RomInject": "0x0A935C"
+	},
+  
+    "MHZ1": 
+	{
+		"File": "MHZ1.bin",
+		"RomInject": "0x0a943c"
+	},
+
+
+    "MHZ2 Autism": 
+	{
+		"File": "MHZ_A.bin",
+		"RomInject": "0x0a949c"
+	},
+
+    "MHZ2 Winter": 
+	{
+		"File": "MHZ_w.bin",
+		"RomInject": "0x0550fe"
+	},
+
+	"soz1":
+	{
+		"File": "SOZ1.bin",
+		"RomInject": "0xA94FC"
+	},
+
+	"soz2":
+	{
+		"File": "soz2.bin",
+		"RomInject": "0xA955C"
+	},
+	
+	"soz2-dim":
+	{
+		"File": "soz2dim.bin",
+	},
+	
+	"soz2-dark":
+	{
+		"File": "soz2dark.bin",
+	},
+  
+	"LRZ1":
+	{
+			"File": "LRZ1.bin",
+			"RomInject": "0x0A967C",
+	},
+
+	"LRZ2 A":
+	{
+			"File": "lrz2.bin",
+			"RomInject": "0x0a96dc",
+	},
+
+	"LRZ2 B": 
+	{
+		"File": "lrz2b.bin",
+		"RomInject": "0x0a9cdc"
+	},
+	
+	"LRZ2 Fire": 
+	{
+		"File": "lrzbf.bin",
+		"RomInject": "0x079726"
+	},
+	
+	"HPZ": 
+	{
+		"File": "hpz1.bin",
+		"RomInject": "0x0A9D3C"
+	},
+	
+	"HPZ2":
+	{
+		"File": "hpz2.bin",
+		"RomInject": "0x0A9D5C"
+	},
+	
+	"HPZ3":
+	{
+		"File": "hpz3.bin",
+		"RomInject": "0x0669D2"
+	},
+	
+	"HPZ4":
+	{
+		"File": "hpz4.bin",
+		"RomInject": "0x0669F2"
+	},  
+  
+  	"SSZ1":
+	{
+		"File": "ssz1.bin",
+		"RomInject": "0x0A973C"  
+	},
+	
+	"SSZ2":
+	{
+		"File": "Ending.bin",
+		"RomInject": "0x0A979C"
+	},	
+
+
+	"DEZ1":
+	{
+		"File": "Death1.bin",
+		"RomInject": "0x0A98BC"
+	},
+	
+	"DEZ2":
+	{
+		"File": "Death2.bin",
+		"RomInject": "0x0A991C"
+	},	
+	
+	"TDZ":
+	{
+		"File": "THEDOOMSDAY.bin",
+		"RomInject": "0x0A997C"
+	}
+	
+}

@@ -1,0 +1,246 @@
+global float betterSOZPal.lightingOffset
+
+
+//# address-hook(0x23de96) end(0x23dec4)
+function void fn23de96()
+{
+	{
+		u16[A1 + 0x00] = 0x0ece
+		u16[A1 + 0x02] = 0x0eac
+		u16[A1 + 0x04] = 0x0e8a
+		u16[A1 + 0x06] = 0x0eac
+		u16[A1 + 0x08] = 0x0e8a
+		u16[A1 + 0x0a] = 0x0e8a
+		u16[A1 + 0x0c] = 0x0e68
+		u16[A1 + 0x0e] = 0x0c46
+		u16[A1 + 0x10] = 0x0c02
+		u16[A1 + 0x12] = 0x0800
+		u16[A1 + 0x14] = 0x0600
+		u16[A1 + 0x18] = 0x0eee
+		u16[A1 + 0x1a] = 0x0ece
+	}
+}
+
+		u16[0x0A8B1C + 0x16] = 0x0C88
+		u16[0x0A8B1C + 0x4c] = 0x0ECC
+		u16[0x0A8B1C + 0x50] = 0x0EAA
+		u16[0x0A8B1C + 0x52] = 0x0CAA
+		u16[0x0A8B1C + 0x54] = 0x0C88
+		u16[0x0A8B1C + 0x56] = 0x0C88
+		u16[0x0A8B1C + 0x58] = 0x0C88
+		u16[0x0A8B1C + 0x5a] = 0x0A66
+		u16[0x0A8B1C + 0x5c] = 0x0866
+
+
+//# address-hook(0x23e20e) end(0x23e23c)
+function void fn23e20e()
+{
+	if ((global.game_mode & 0x80) == 0)
+	{
+		A1 = 0xfffffc62
+		u32[(A1+=4)-4] = 0x0eec0cc6
+		u32[(A1+=4)-4] = 0x0c800c60
+		u32[(A1+=4)-4] = 0x0c400a40
+		u32[(A1+=4)-4] = 0x08200620
+	#if STANDALONE
+		u32[0xfffffc7c] = 0x0c600ea4	// New line, corrects original S3&K glitch with brightest two colors in background reflections on water
+	#endif
+		objA1.update_address = 0x02000600
+	}
+
+	A1 = 0xfffffce2
+	u32[(A1+=4)-4] = 0x0eec0cc6
+	u32[(A1+=4)-4] = 0x0c800c60
+	u32[(A1+=4)-4] = 0x0c400a40
+	u32[(A1+=4)-4] = 0x08200620
+#if STANDALONE
+	u32[0xfffffc7c] = 0x0c600ea4	// New line, corrects original S3&K glitch with brightest two colors in background reflections on water
+#endif
+	objA1.update_address = 0x02000600
+}
+
+// The Death Egg in background (Fix by raine maybe)
+//# address-hook(0x0659cc) end(0x065a2c)
+function void fn0659cc()
+{
+    setupObjectAttributesFull(0x0664aa)
+    objA0.update_address = 0x065a30
+
+    objA0.position.x.u16 = 0x0200
+    objA0.position.y.u16 = 0x0c68
+    objA0.velocity.y = 0x0c68
+    u16[A0 + 0x40] = 0xffc0
+    objA0.countdown_value = 0x0100
+    global.random.seed = global.framecounter
+
+    // "spawnChildObjects(0x0665c4)" replaced by:
+    spawnChildObject(0x065b0e, 0x00, 0, 0)
+    spawnChildObject(0x065a8c, 0x02, 0, -51)
+    spawnChildObject(0x065b42, 0x04, -32, 29)
+    spawnChildObject(0x065b42, 0x06, -16, 29)
+    spawnChildObject(0x065b42, 0x08, 8, 29)
+    spawnChildObject(0x065b42, 0x0a, 16, 29)
+    spawnChildObject(0x065b42, 0x0c, 40, 29)
+
+    copyMemory(0xfffffce0, 0xfffffc60, 0x20)
+
+    A1 = 0x0669be
+    A2 = 0xfffffc6c
+    D0 = 0x0a
+    while (D0.s16 >= 0)
+    {
+        D1.u16 = u16[(A1+=2)-2]
+        if (D1.u16 != 0)
+        {
+            u16[A2] = D1.u16
+        }
+        A2 += 2
+        --D0.s16
+    }
+
+    fn065a30()
+}
+
+
+
+
+//# address-hook(0x002546) end(0x00257a)
+function void LevelPaletteUpdate.SOZ1()
+{
+	base.LevelPaletteUpdate.SOZ1()
+	System.loadExternalRawData("soz1", 0xfffffc58, 0x38, 0x08, true, true)
+			
+	u8 shift_offset = (level.palettefx.frame_3 / 8)
+	betterSOZPal.handlePaletteCycles(shift_offset)
+}
+
+//# address-hook(0x05618c) end(0x0561b6)
+function void InitLevelTiles.SOZ2()
+{
+	base.InitLevelTiles.SOZ2()
+	
+	betterSOZPal.setLightStateToLight()
+}
+
+//# address-hook(0x055efc) end(0x055f46)
+function void fn055efc()
+{
+	base.fn055efc()
+	betterSOZPal.setLightStateToDark()
+}
+
+//# address-hook(0x002598) end(0x00266a)
+function void LevelPaletteUpdate.SOZ2()
+{
+	base.LevelPaletteUpdate.SOZ2()
+	
+	if (level.scrolling_routine < 0x28)
+		betterSOZPal.handleLighting()
+}
+
+//# address-hook(0x05629c) end(0x05629c)
+function void fn05629c()
+{
+	base.fn05629c()
+	betterSOZPal.lightingOffset = 1
+}
+
+//# address-hook(0x056324)
+function void fn056324()
+{
+	base.fn056324()
+
+	System.loadExternalRawData("soz2-dark", 0xfffffca0)
+}
+
+function void betterSOZPal.handleLighting()
+{
+	float target_offset = ((u8[0xfffff7c3] != 0) ? (u8[0xfffff7c3] / 5.0) : (level.palettefx.frame_2 / 208.0))
+	
+	System.loadExternalRawData("soz2", 0xfffff000)
+	System.loadExternalRawData("soz2-dark", 0xfffff080)
+	
+	betterSOZPal.lightingOffset = Math.lerp(betterSOZPal.lightingOffset, target_offset, 0.25)
+	//debugLog(betterSOZPal.lightingOffset)
+	
+	for (u8 i == 0; i < 128; i +=2)
+	{
+		
+		if (i > 30)
+		{
+			u16 palette = u16[0xfffff080 + i]
+		
+			// get colors
+			u16 color1 = u16[0xfffff000 + i]
+			u16 color2 =  palette
+			
+			// unpack colors
+			u32 color1_ABGR32 = unpackColor(color1)
+			u32 color2_ABGR32 = unpackColor(color2)
+			
+			// convert unpacked colors from abgr to rgba
+			u32 color1_RGBA32 = convertColors32(color1_ABGR32) 
+			u32 color2_RGBA32 = convertColors32(color2_ABGR32)
+			
+			// do the lerp thing
+			u32 color_target_RGBA32 = Color.lerp(color1_RGBA32, color2_RGBA32, betterSOZPal.lightingOffset)
+			
+			// convert lerped unpacked colors back to rgba
+			u32 color_target_ABGR32 = convertColors32(color_target_RGBA32)
+			
+			// pack colors
+			u32 color_target = packColorExt(color_target_ABGR32)
+			
+			u16[0xfffffc20 + i] = color_target
+		}
+	}
+	
+	u8 shift_offset = (level.palettefx.frame_3 / 8)
+	
+	betterSOZPal.handlePaletteCycles(shift_offset)
+}
+
+function void betterSOZPal.handlePaletteCycles(u8 shift_offset)
+{
+	A1 = 0xfffffc58
+	A2 = u16[A1]
+	A3 = u16[A1 + 2]
+	A4 = u16[A1 + 4]
+	A5 = u16[A1 + 6]
+	
+	if (shift_offset == 1)
+	{
+		u16[A1] = A5
+		u16[A1 + 2] = A2
+		u16[A1 + 4] = A3
+		u16[A1 + 6] = A4
+	}
+	else if (shift_offset == 2)
+	{
+		u16[A1] = A4
+		u16[A1 + 2] = A5
+		u16[A1 + 4] = A2
+		u16[A1 + 6] = A3
+	}
+	else if (shift_offset == 3)
+	{
+		u16[A1] = A3
+		u16[A1 + 2] = A4
+		u16[A1 + 4] = A5
+		u16[A1 + 6] = A2
+	}
+}
+
+
+// funcs meant to be used from other mods
+function void betterSOZPal.setLightStateToDark()
+{
+	System.loadExternalRawData("soz2-dark", 0xfffffca0)
+	betterSOZPal.lightingOffset = 1.0
+}
+
+function void betterSOZPal.setLightStateToLight()
+{
+	System.loadExternalRawData("soz2", 0xfffff000)
+	betterSOZPal.lightingOffset = 0
+}
