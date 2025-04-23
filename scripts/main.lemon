@@ -1,5 +1,21 @@
 global float betterSOZPal.lightingOffset
 
+//# address-hook(0x05011e) end(0x0501fc) // right after fire goes away in AIZ1.5
+function void fn05011e()
+{
+	base.fn05011e()
+	if (global.zone_act == 0x0001 && gfx.plane_update_routine == 0x0c)
+		Level.loadPaletteData(0x0b) // reload the palette because something changed i guess
+}
+
+//# address-hook(0x04fbea) end(0x04fc42) right after fire gets triggered in AIZ1
+function void fn04fbea()
+{
+	u16 previousval = u16[0xffffeec6]
+	base.fn04fbea()
+	if (u16[0xffffeec6] == 0 && previousval != 0) // should probably mean it the fire wall palette got triggered
+		loadPaletteLine1(0x06917c)
+}
 
 //# address-hook(0x23de96) end(0x23dec4) //icz1
 function void fn23de96()
@@ -111,31 +127,15 @@ function void LevelPaletteUpdate.AIZ2()
 		level.palettefx.timer_1 = 5
 		D0.u16 = level.palettefx.frame_1 & 0x18
 		level.palettefx.frame_1 += 8
-
+		
 		copyMemory(0xfffffc78, 0x002c26 + D0.u16, 8)
 		D0.u16 = level.palettefx.frame_2
 		level.palettefx.frame_2 = (level.palettefx.frame_2 + 6) % 48
-
-		A0 = (camera.position.x.u16 >= 0x3800) ? 0x002c76 : 0x002c46
-
-		u16[0xfffffc00] = u16[A0 + D0.u16]
-		u16[0xfffffc00] = u16[A0 + D0.u16 + 2]
-		u16[0xfffffc00] = u16[A0 + D0.u16 + 4]
-		if (camera.position.x.u16 < 0x1c0)
-			u16[0xfffffc5c] = u16[A0 + D0.u16 + 4]
+		
+		if (camera.position.x.u16 >= 0x1c0)
+			u16[0xfffffc5c] = 0x0aa2 // previously 0x0a0e
 		else
-			u16[0xfffffc5c] = 0x0a0e
-	}
-
-	--level.palettefx.timer_2
-	if (s16(level.palettefx.timer_2) < 0)
-	{
-		level.palettefx.timer_2 = 1
-		D0.u16 = level.palettefx.frame_3
-		level.palettefx.frame_3 = (level.palettefx.frame_3 + 2) % 52
-
-		A0 = (camera.position.x.u16 >= 0x3800) ? 0x002cda : 0x002ca6
-		u16[0xfffffc00] = u16[A0 + D0.u16]
+			u16[0xfffffc5c] = u16[0xfffffc76]
 	}
 }
 
