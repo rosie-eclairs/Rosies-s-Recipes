@@ -16,6 +16,24 @@
 		"File": "AIZ1W.bin",
 		"RomInject": "0x0a8c9c"
 	},
+
+	"AIZ2":
+	{
+		"File": "AIZ2.bin",
+		"RomInject": "0x0A8BDC"
+	},	
+	
+	"AIZ2 W":
+	{
+		"File": "AIZ2W.bin",
+		"RomInject": "0x0A8D1C"
+	},	
+	
+	"AIZ2 B":
+	{
+		"File": "aiz2b.bin",
+		"RomInject": "0x0A8C3C"
+	},
 	
 	"HCZ1": 
 	{
