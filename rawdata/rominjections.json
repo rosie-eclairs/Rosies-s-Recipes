@@ -67,12 +67,6 @@
 		"RomInject": "0x0A8F5C"
 	},
 
-	"MGZ to CNZ":
-	{
-		"File": "mgz_to_cnz.bin",
-		"RomInject": "0x0364896"
-	},
-
 
 	"CNZ":
 	{
