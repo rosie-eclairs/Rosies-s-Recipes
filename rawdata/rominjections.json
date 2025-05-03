@@ -264,6 +264,36 @@
 	{
 		"File": "THEDOOMSDAY.bin",
 		"RomInject": "0x0A997C"
-	}
+	},
+
+	"ALZ":
+	{
+		"File": "ALZ.bin",
+		"RomInject": "0xA99DC"
+	},
+
+	"BPZ":
+	{
+		"File": "BPZ.bin",
+		"RomInject": "0xA9A3C"
+	},
+	
+	"CGZ":
+	{
+		"File": "CGZ.bin",
+		"RomInject": "0xA9AFC"
+	},	
+	
+	"DPZ":
+	{
+		"File": "DPZ.bin",
+		"RomInject": "0xA9A9C"
+	},		
+	
+	"EMZ":
+	{
+		"File": "EMZ.bin",
+		"RomInject": "0xA9B5C"
+	}	
 	
 }
