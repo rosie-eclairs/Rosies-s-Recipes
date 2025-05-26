@@ -5,22 +5,4 @@
 		"Author": "rosie_eclairs, panoramhusky & Ramona (nabbup)",
 		"Description": "My own flavour of the locales from Angel Island.",
 	},
-	"Settings":
-	{
-		"Palette Options":
-		[
-			{
-				"InternalName": "recipes.Palette",
-				"DisplayName": "How do ya want ur zones?",
-				"Variable": "recipes.Palette",
-				"DefaultValue": "00",
-				"Options":
-					{
-					"0x00": "Default",
-					"0x01": "Alternate"
-					
-					}
-			}
-		]	
-	}
 }
