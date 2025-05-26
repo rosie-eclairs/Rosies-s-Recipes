@@ -350,7 +350,7 @@ function void fn07305a() // fade to red
 		u16[0xfffffc00 + 0x3d * 2] = 0x0604
 		u16[0xfffffc00 + 0x3e * 2] = 0x0402
 	}
-	else if (lbz2fadeprog == 16)
+	else if (lbz2fadeprog == 32)
 	{
 		u16[0xfffffc00 + 0x3b * 2] = 0x0628
 		u16[0xfffffc00 + 0x3c * 2] = 0x0406
