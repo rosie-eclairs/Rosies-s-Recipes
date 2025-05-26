@@ -75,7 +75,7 @@ function void fn23e20e()
 	objA1.update_address = 0x02000600
 }
 
-// The Death Egg in background (Fix by raine maybe)
+// The Death Egg in background (Fix by ramona maybe)
 //# address-hook(0x0659cc) end(0x065a2c)
 function void fn0659cc()
 {
@@ -309,4 +309,113 @@ function void betterSOZPal.setLightStateToLight()
 {
 	System.loadExternalRawData("soz2", 0xfffff000)
 	betterSOZPal.lightingOffset = 0
+}
+
+// should be fine ~ Ramona
+//# address-hook(0x07305a)
+function void fn07305a() // fade to red
+{
+	base.fn07305a()
+	u16 lbz2fadeprog = max(s16(u16[A0 + 0x48]-1),0) // "laziness" >it takes more effort
+	if (Mods.isModActive("big-arm-fade")) // a papertriangle mod :3
+	{
+		// need to access variables without requiring the mod itself
+		u16 p1 = System.getGlobalVariableValueByName("bigarmfade.p1")
+		u16 p2 = System.getGlobalVariableValueByName("bigarmfade.p2")
+		u16 p3 = System.getGlobalVariableValueByName("bigarmfade.p3")
+		u16 p4 = System.getGlobalVariableValueByName("bigarmfade.p4")
+		u8 steps = System.getGlobalVariableValueByName("bigarmfade.steps")
+		
+		if (lbz2fadeprog < 48 && lbz2fadeprog % steps == 0)
+		{
+			u16[0xfffffc00 + 0x3b * 2] = blendColorsPacked(p1, 0x0408, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3c * 2] = blendColorsPacked(p2, 0x0006, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3d * 2] = blendColorsPacked(p3, 0x0004, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3e * 2] = blendColorsPacked(p4, 0x0002, lbz2fadeprog * 5)
+		}
+		else if (lbz2fadeprog == 48)
+		{
+			u16[0xfffffc00 + 0x3b * 2] = 0x0408
+			u16[0xfffffc00 + 0x3c * 2] = 0x0006
+			u16[0xfffffc00 + 0x3d * 2] = 0x0004
+			u16[0xfffffc00 + 0x3e * 2] = 0x0002
+		}
+		return
+	}
+	// Sky palette fade steps
+	if (lbz2fadeprog == 16)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0a48
+		u16[0xfffffc00 + 0x3c * 2] = 0x0806
+		u16[0xfffffc00 + 0x3d * 2] = 0x0604
+		u16[0xfffffc00 + 0x3e * 2] = 0x0402
+	}
+	else if (lbz2fadeprog == 16)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0628
+		u16[0xfffffc00 + 0x3c * 2] = 0x0406
+		u16[0xfffffc00 + 0x3d * 2] = 0x0204
+		u16[0xfffffc00 + 0x3e * 2] = 0x0202
+	}
+	else if (lbz2fadeprog == 48)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0408
+		u16[0xfffffc00 + 0x3c * 2] = 0x0006
+		u16[0xfffffc00 + 0x3d * 2] = 0x0004
+		u16[0xfffffc00 + 0x3e * 2] = 0x0002
+	}
+}
+
+//# address-hook(0x072e30)
+function void fn072e30() // fade back to blue
+{
+	base.fn072e30()
+	u16 lbz2fadeprog = max(s16(u16[A0 + 0x48]-1),0) // "laziness" >it takes more effort
+	if (Mods.isModActive("big-arm-fade")) // a papertriangle mod :3
+	{
+		// need to access variables without requiring the mod itself
+		u16 p1 = System.getGlobalVariableValueByName("bigarmfade.p1")
+		u16 p2 = System.getGlobalVariableValueByName("bigarmfade.p2")
+		u16 p3 = System.getGlobalVariableValueByName("bigarmfade.p3")
+		u16 p4 = System.getGlobalVariableValueByName("bigarmfade.p4")
+		u8 steps = System.getGlobalVariableValueByName("bigarmfade.steps")
+		
+		if (lbz2fadeprog < 48 && lbz2fadeprog % steps == 0)
+		{
+			u16[0xfffffc00 + 0x3b * 2] = blendColorsPacked(0x0408, p1, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3c * 2] = blendColorsPacked(0x0006, p2, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3d * 2] = blendColorsPacked(0x0004, p3, lbz2fadeprog * 5)
+			u16[0xfffffc00 + 0x3e * 2] = blendColorsPacked(0x0002, p4, lbz2fadeprog * 5)
+		}
+		else if (u16[A0 + 0x48] == 48)
+		{
+			u16[0xfffffc00 + 0x3b * 2] = bigarmfade.p1
+			u16[0xfffffc00 + 0x3c * 2] = bigarmfade.p2
+			u16[0xfffffc00 + 0x3d * 2] = bigarmfade.p3
+			u16[0xfffffc00 + 0x3e * 2] = bigarmfade.p4
+		}
+		return
+	}
+	// Sky palette fade steps
+	if (lbz2fadeprog == 16)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0628
+		u16[0xfffffc00 + 0x3c * 2] = 0x0406
+		u16[0xfffffc00 + 0x3d * 2] = 0x0204
+		u16[0xfffffc00 + 0x3e * 2] = 0x0202
+	}
+	else if (lbz2fadeprog == 32)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0a48
+		u16[0xfffffc00 + 0x3c * 2] = 0x0806
+		u16[0xfffffc00 + 0x3d * 2] = 0x0604
+		u16[0xfffffc00 + 0x3e * 2] = 0x0402
+	}
+	else if (lbz2fadeprog == 48)
+	{
+		u16[0xfffffc00 + 0x3b * 2] = 0x0a60
+		u16[0xfffffc00 + 0x3c * 2] = 0x0a20
+		u16[0xfffffc00 + 0x3d * 2] = 0x0800
+		u16[0xfffffc00 + 0x3e * 2] = 0x0400
+	}
 }
