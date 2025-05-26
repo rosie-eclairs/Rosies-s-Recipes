@@ -389,10 +389,10 @@ function void fn072e30() // fade back to blue
 		}
 		else if (u16[A0 + 0x48] == 48)
 		{
-			u16[0xfffffc00 + 0x3b * 2] = bigarmfade.p1
-			u16[0xfffffc00 + 0x3c * 2] = bigarmfade.p2
-			u16[0xfffffc00 + 0x3d * 2] = bigarmfade.p3
-			u16[0xfffffc00 + 0x3e * 2] = bigarmfade.p4
+			u16[0xfffffc00 + 0x3b * 2] = p1
+			u16[0xfffffc00 + 0x3c * 2] = p2
+			u16[0xfffffc00 + 0x3d * 2] = p3
+			u16[0xfffffc00 + 0x3e * 2] = p4
 		}
 		return
 	}
