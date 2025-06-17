@@ -192,6 +192,18 @@
 			"File": "LRZ1.bin",
 			"RomInject": "0x0A967C",
 	},
+	
+	"LRZ1 Miniboss":
+	{
+		"File": "lrz1_mb.bin",
+		"RomInject": "0x078E2A"
+	},
+	
+	"LRZ2 Intro":
+	{
+		"File": "lrz2.bin",
+		"RomInject": "0x078e6a"
+	},		
 
 	"LRZ2 A":
 	{
