@@ -1,4 +1,4 @@
-global float betterSOZPal.lightingOffset
+global u8 FBZ1_NIGHT
 
 //# address-hook(0x05011e) end(0x0501fc) // right after fire goes away in AIZ1.5
 function void fn05011e()
@@ -159,157 +159,57 @@ function void fn068646()
 }
 
 
+//FBZ BG PALETTE
 
 
-
-
-
-
-
-
-
-
-
-//# address-hook(0x002546) end(0x00257a)
-function void LevelPaletteUpdate.SOZ1()
+function void copyPaletteDataFromTable(u8 index, u16 ramAddress)
 {
-	base.LevelPaletteUpdate.SOZ1()
-	System.loadExternalRawData("soz1", 0xfffffc58, 0x38, 0x08, true, true)
-			
-	u8 shift_offset = (level.palettefx.frame_3 / 8)
-	betterSOZPal.handlePaletteCycles(shift_offset)
-}
-
-//# address-hook(0x05618c) end(0x0561b6)
-function void InitLevelTiles.SOZ2()
-{
-	base.InitLevelTiles.SOZ2()
-	
-	betterSOZPal.setLightStateToLight()
-}
-
-//# address-hook(0x055efc) end(0x055f46)
-function void fn055efc()
-{
-	base.fn055efc()
-	betterSOZPal.setLightStateToDark()
-}
-
-//# address-hook(0x002598) end(0x00266a)
-function void LevelPaletteUpdate.SOZ2()
-{
-	base.LevelPaletteUpdate.SOZ2()
-	
-	if (level.scrolling_routine < 0x28)
-		betterSOZPal.handleLighting()
-}
-
-//# address-hook(0x05629c) end(0x05629c)
-function void fn05629c()
-{
-	base.fn05629c()
-	betterSOZPal.lightingOffset = 1
-}
-
-//# address-hook(0x056324)
-function void fn056324()
-{
-	base.fn056324()
-
-	System.loadExternalRawData("soz2-dark", 0xfffffca0)
-}
-
-function void betterSOZPal.handleLighting()
-{
-	float target_offset = ((u8[0xfffff7c3] != 0) ? (u8[0xfffff7c3] / 5.0) : (level.palettefx.frame_2 / 208.0))
-	
-	System.loadExternalRawData("soz2", 0xfffff000)
-	System.loadExternalRawData("soz2-dark", 0xfffff080)
-	
-	betterSOZPal.lightingOffset = Math.lerp(betterSOZPal.lightingOffset, target_offset, 0.25)
-	//debugLog(betterSOZPal.lightingOffset)
-	
-	for (u8 i == 0; i < 128; i +=2)
+	if ((index == 0x12 || index == 0x13) )
 	{
-		
-		if (i > 30)
+		u64 key = "fbz_s3c_night_interior" // base palette for both acts
+		u16 numColors = System.loadExternalPaletteData(key, 0, 0x800000, 0x10)
+
+		for (u8 i = 0; i < numColors; ++i)
 		{
-			u16 palette = u16[0xfffff080 + i]
-		
-			// get colors
-			u16 color1 = u16[0xfffff000 + i]
-			u16 color2 =  palette
-			
-			// unpack colors
-			u32 color1_ABGR32 = unpackColor(color1)
-			u32 color2_ABGR32 = unpackColor(color2)
-			
-			// convert unpacked colors from abgr to rgba
-			u32 color1_RGBA32 = convertColors32(color1_ABGR32) 
-			u32 color2_RGBA32 = convertColors32(color2_ABGR32)
-			
-			// do the lerp thing
-			u32 color_target_RGBA32 = Color.lerp(color1_RGBA32, color2_RGBA32, betterSOZPal.lightingOffset)
-			
-			// convert lerped unpacked colors back to rgba
-			u32 color_target_ABGR32 = convertColors32(color_target_RGBA32)
-			
-			// pack colors
-			u32 color_target = packColorExt(color_target_ABGR32)
-			
-			u16[0xfffffc20 + i] = color_target
+			u32 rgba = u32[0x800000 + i * 4]
+			if (rgba & 0xff000000)
+			{
+				u16[0x0A90DC + i * 2] = packColorExt(rgba)
+				u16[0x0A913C + i * 2] = packColorExt(rgba)
+			}
+		}
+		key = "fbz_s3c_night_interior_overlay" // overlayed onto base palette when switching back to interior
+		numColors = System.loadExternalPaletteData(key, 0, 0x800000, 0x08)
+		for (u8 i = 0; i < numColors; ++i)
+		{
+			u32 rgba = u32[0x800000 + i * 4]
+			if (rgba & 0xff000000)
+				u16[0x052DC0 + i * 2] = packColorExt(rgba)
+		}
+		if (index == 0x13 && (System.getGlobalVariableValueByName("useottsOriginalZoneOrder.fbzPalettes") != 0 && !Game.getSetting(SETTING_ICZ_NIGHTTIME)))
+		{
+			base.copyPaletteDataFromTable(index, ramAddress)
+			return
+		}
+		key = "fbz1_s3c_night" // overlayed onto base palette for sky sections
+		numColors = System.loadExternalPaletteData(key, 0, 0x800000, 0x0e)
+
+		for (u8 i = 0; i < numColors; ++i)
+		{
+			u32 rgba = u32[0x800000 + i * 4]
+			if (rgba & 0xff000000)
+				u16[0x052dd0 + i * 2] = packColorExt(rgba)
 		}
 	}
-	
-	u8 shift_offset = (level.palettefx.frame_3 / 8)
-	
-	betterSOZPal.handlePaletteCycles(shift_offset)
-}
-
-function void betterSOZPal.handlePaletteCycles(u8 shift_offset)
-{
-	A1 = 0xfffffc58
-	A2 = u16[A1]
-	A3 = u16[A1 + 2]
-	A4 = u16[A1 + 4]
-	A5 = u16[A1 + 6]
-	
-	if (shift_offset == 1)
-	{
-		u16[A1] = A5
-		u16[A1 + 2] = A2
-		u16[A1 + 4] = A3
-		u16[A1 + 6] = A4
-	}
-	else if (shift_offset == 2)
-	{
-		u16[A1] = A4
-		u16[A1 + 2] = A5
-		u16[A1 + 4] = A2
-		u16[A1 + 6] = A3
-	}
-	else if (shift_offset == 3)
-	{
-		u16[A1] = A3
-		u16[A1 + 2] = A4
-		u16[A1 + 4] = A5
-		u16[A1 + 6] = A2
-	}
+	base.copyPaletteDataFromTable(index, ramAddress)
 }
 
 
-// funcs meant to be used from other mods
-function void betterSOZPal.setLightStateToDark()
-{
-	System.loadExternalRawData("soz2-dark", 0xfffffca0)
-	betterSOZPal.lightingOffset = 1.0
-}
+//END  FBZ BG PALETTE
 
-function void betterSOZPal.setLightStateToLight()
-{
-	System.loadExternalRawData("soz2", 0xfffff000)
-	betterSOZPal.lightingOffset = 0
-}
+
+
+
 
 // should be fine ~ Ramona
 //# address-hook(0x07305a)
