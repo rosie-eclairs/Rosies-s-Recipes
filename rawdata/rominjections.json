@@ -171,7 +171,12 @@
 		"RomInject": "0xA94FC"
 	},
 
-  
+ 	"soz2":
+	{
+		"File": "soz2.bin",
+		"RomInject": "0xA955C"
+	},
+	
 	"LRZ1":
 	{
 		"File": "LRZ1.bin",
