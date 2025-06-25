@@ -393,6 +393,29 @@
 	{
 		"File": "compbg.bin",
 		"RomInject": "0x39D282"
-	}
+	},
+	
+	
+	
+	
+	"Gumball":
+	{
+		"File": "Gumball.bin",
+		"RomInject": "0x12345"
+	},	
+	
+	"Pachinko":
+	{
+		"File": "Pachinko.bin",
+		"RomInject": "0x12345"
+	},		
+	
+	"Slots":
+	{
+		"File": "Slots.bin",
+		"RomInject": "0x12345"
+	}	
+	
+	
 	
 }
