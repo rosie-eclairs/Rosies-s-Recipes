@@ -306,6 +306,96 @@
 	{
 		"File": "EMZ.bin",
 		"RomInject": "0xA9B5C"
-	}	
+	},
+	
+	"compmenuicons":
+	{
+		"File": "compmenuicons.bin",
+		"RomInject": "0x20A5BE"
+	},
+	
+	"Zone Card 1":
+	{
+		"File": "Zone Card 1.bin",
+		"RomInject": "0xCB18"
+	},
+	
+	"Zone Card 2":
+	{
+		"File": "Zone Card 2.bin",
+		"RomInject": "0x20BC56"
+	},
+	
+	"Zone Card 3":
+	{
+		"File": "Zone Card 3.bin",
+		"RomInject": "0x20BC76"
+	},
+	
+	"Zone Card 4":
+	{
+		"File": "Zone Card 4.bin",
+		"RomInject": "0x20BC96"
+	},
+	
+	"Zone Card 5":
+	{
+		"File": "Zone Card 5.bin",
+		"RomInject": "0x20BCD6"
+	},
+	
+	"Zone Card 6":
+	{
+		"File": "Zone Card 6.bin",
+		"RomInject": "0x20BCF6"
+	},
+	
+	"Zone Card 7":
+	{
+		"File": "Zone Card 7.bin",
+		"RomInject": "0xCBD8"
+	},
+	
+	"Zone Card 8":
+	{
+		"File": "Zone Card 8.bin",
+		"RomInject": "0xCBF8"
+	},
+	
+	"Zone Card 8 S3":
+	{
+		"File": "Zone Card 8 S3.bin",
+		"RomInject": "0x20BCB6"
+	},
+	
+	"Zone Card 9":
+	{
+		"File": "Zone Card 9.bin",
+		"RomInject": "0xCC18"
+	},
+	
+	"Zone Card A":
+	{
+		"File": "Zone Card A.bin",
+		"RomInject": "0xCC38"
+	},
+	
+	"Zone Card B":
+	{
+		"File": "Zone Card B.bin",
+		"RomInject": "0xCC58"
+	},
+	
+	"Zone Card C":
+	{
+		"File": "Zone Card C.bin",
+		"RomInject": "0xCC78"
+	},
+	
+	"Zone Card D":
+	{
+		"File": "Zone Card D.bin",
+		"RomInject": "0xCC98"
+	}
 	
 }
