@@ -406,7 +406,7 @@
 	
 	"compbg":
 	{
-		"File": "comp.bin",
+		"File": "compbg.bin",
 		"RomInject": "0x39D282"
 	}
 	
