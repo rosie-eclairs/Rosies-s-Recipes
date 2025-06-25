@@ -323,31 +323,31 @@
 	"Zone Card 2":
 	{
 		"File": "Zone Card 2.bin",
-		"RomInject": "0x20BC56"
+		"RomInject": "0xCB38"
 	},
 	
 	"Zone Card 3":
 	{
 		"File": "Zone Card 3.bin",
-		"RomInject": "0x20BC76"
+		"RomInject": "0xCB58"
 	},
 	
 	"Zone Card 4":
 	{
 		"File": "Zone Card 4.bin",
-		"RomInject": "0x20BC96"
+		"RomInject": "0xCB78"
 	},
 	
 	"Zone Card 5":
 	{
 		"File": "Zone Card 5.bin",
-		"RomInject": "0x20BCD6"
+		"RomInject": "0xCB98"
 	},
 	
 	"Zone Card 6":
 	{
 		"File": "Zone Card 6.bin",
-		"RomInject": "0x20BCF6"
+		"RomInject": "0xCBB8"
 	},
 	
 	"Zone Card 7":
