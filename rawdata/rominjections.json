@@ -395,25 +395,22 @@
 		"RomInject": "0x39D282"
 	},
 	
-	
-	
-	
 	"Gumball":
 	{
 		"File": "Gumball.bin",
-		"RomInject": "0x12345"
+		"RomInject": "0xA9BBC"
 	},	
 	
 	"Pachinko":
 	{
 		"File": "Pachinko.bin",
-		"RomInject": "0x12345"
+		"RomInject": "0xA9C1C"
 	},		
 	
 	"Slots":
 	{
 		"File": "Slots.bin",
-		"RomInject": "0x12345"
+		"RomInject": "0xA9C7C"
 	}	
 	
 	
