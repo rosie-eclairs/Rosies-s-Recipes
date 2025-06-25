@@ -396,6 +396,18 @@
 	{
 		"File": "Zone Card D.bin",
 		"RomInject": "0xCC98"
+	},
+	
+	"dataselbg":
+	{
+		"File": "dataselbg.bin",
+		"RomInject": "0x39D262"
+	},
+	
+	"compbg":
+	{
+		"File": "comp.bin",
+		"RomInject": "0x39D282"
 	}
 	
 }
