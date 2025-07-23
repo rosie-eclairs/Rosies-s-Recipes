@@ -1,35 +1,47 @@
 {
-	"AIZ INTRO": 
+	"TITLE":
+	{
+		"File": "TITLE.bin",
+		"RomInject": "0x47ac"
+	},
+	
+	"TITLE BANNER":
+	{
+		"File": "TITLE-BANNER.bin",
+		"RomInject": "0x35026C"
+	},
+	
+	"TSZ INTRO": 
 	{
 		"File": "AIZ-INTRO.bin",
 		"RomInject": "0x0a8b1c"
 	},
 	
-	"AIZ1": 
+	"TSZ1": 
 	{
 		"File": "AIZ1.bin",
 		"RomInject": "0x0a8b7c"
 	},
 	
-	"AIZ1 WATER": 
+	"TSZ1 WATER": 
 	{
 		"File": "AIZ1W.bin",
 		"RomInject": "0x0a8c9c"
 	},
 
-	"AIZ2":
+	"TSZ2":
 	{
 		"File": "AIZ2.bin",
 		"RomInject": "0x0A8BDC"
 	},	
 	
-	"AIZ2 WATER":
+	"TSZ2 WATER":
 	{
 		"File": "AIZ2-WATER.bin",
 		"RomInject": "0x0A8D1C"
 	},	
 	
-	"AIZ2 B":
+	"TSZ2 B":
 	{
 		"File": "AIZ2-B.bin",
 		"RomInject": "0x0A8C3C"
@@ -178,6 +190,19 @@
 		"File": "SOZ2.bin",
 		"RomInject": "0xA955C"
 	},
+	
+	"SOZ2 DARK":
+	{
+		"File": "SOZ2-DARK.bin",
+		"RomInject": "0x317a"
+	},
+	
+	"sand":
+	{
+		"File": "SOZ-SAND.bin",
+		"RomInject": "0x30DA"
+	},
+	
 	
 	"LRZ1":
 	{

@@ -1,0 +1,9 @@
+{
+	"icz2bg_layer1":  { "File": "ICZ2.png", "Rect": "0,0,512,90", "Center": "256,0" },
+	"icz2bg_layer2":  { "File": "ICZ2.png", "Rect": "0,90,512,47", "Center": "256,-90" },
+	"icz2bg_layer3":  { "File": "ICZ2.png", "Rect": "0,136,512,8", "Center": "256,-136" },
+	"icz2bg_layer4":  { "File": "ICZ2.png", "Rect": "0,144,512,8", "Center": "256,-144" },
+	"icz2bg_layer5":  { "File": "ICZ2.png", "Rect": "0,152,512,8", "Center": "256,-152" },
+	"icz2bg_layer6":  { "File": "ICZ2.png", "Rect": "0,160,512,25", "Center": "256,-160" },
+	"icz2bg_layer7":  { "File": "ICZ2.png", "Rect": "0,184,512,40", "Center": "256,-184" },
+}
