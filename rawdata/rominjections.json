@@ -13,37 +13,37 @@
 	
 	"TSZ INTRO": 
 	{
-		"File": "AIZ-INTRO.bin",
+		"File": "TSZ-INTRO.bin",
 		"RomInject": "0x0a8b1c"
 	},
 	
 	"TSZ1": 
 	{
-		"File": "AIZ1.bin",
+		"File": "TSZ1.bin",
 		"RomInject": "0x0a8b7c"
 	},
 	
 	"TSZ1 WATER": 
 	{
-		"File": "AIZ1W.bin",
+		"File": "TSZ1W.bin",
 		"RomInject": "0x0a8c9c"
 	},
 
 	"TSZ2":
 	{
-		"File": "AIZ2.bin",
+		"File": "TSZ2.bin",
 		"RomInject": "0x0A8BDC"
 	},	
 	
 	"TSZ2 WATER":
 	{
-		"File": "AIZ2-WATER.bin",
+		"File": "TSZ2-WATER.bin",
 		"RomInject": "0x0A8D1C"
 	},	
 	
 	"TSZ2 B":
 	{
-		"File": "AIZ2-B.bin",
+		"File": "TSZ2-B.bin",
 		"RomInject": "0x0A8C3C"
 	},
 	
@@ -381,7 +381,7 @@
 	
 	"FBZ ICON - S3":
 	{
-		"File": "ZONE8-PROTO.bin",
+		"File": "ZONE8-S3.bin",
 		"RomInject": "0x20BCB6"
 	},
 	
